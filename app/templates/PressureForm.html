@@ -1,6 +1,12 @@
+{% extends "base.html" %}
+{% block body %}
+
 {% from '_formhelpers.html' import render_field %}
-<form method=post action="/pressure">
-<dl>
+<form method="post" action="/pressure">
+	{{form.hidden_tag()}}
 	{{render_field(form.Pressure)}}
 	{{render_field(form.Temperature)}}
-</dl>
+	<p><input type="submit" value="Submit"></p>
+</form>
+
+{% endblock %}

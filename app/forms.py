@@ -1,7 +1,8 @@
-from wtforms import Form
-from wtforms import TextField, validators, BooleanField, FloatField
+from flask_wtf import Form
+from wtforms import TextField, validators, DecimalField
+from wtforms.validators import DataRequired
 
 class PressureForm(Form):
-	Pressure = FloatField('Pressure', [validators.Required()])
-	Temperature = FloatField('Temperature',[validators.Required()])
+	Pressure = DecimalField('Pressure', validators = [DataRequired()])
+	Temperature = DecimalField('Temperature',validators = [DataRequired()])
 
