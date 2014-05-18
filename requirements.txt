@@ -1,5 +1,5 @@
+-e git+https://github.com/cython/cython.git#egg=Cython
 CoolProp==4.2.0
-Cython==0.21dev
 Flask==0.10.1
 Flask-WTF==0.9.5
 Jinja2==2.7.2
