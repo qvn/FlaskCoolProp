@@ -17,12 +17,9 @@ def pressure():
 	if form.validate_on_submit():
 		t = form.Temperature.data
 		p = form.Pressure.data
-		State = CoolProp_State(p,t)
-		rho = State.state.get_rho()
-		cv = State.get_cv()
-		cp = State.state.get_cp()
+		props = CoolProp_State(p,t).get_all()
 		flash('Completed Calculations')
-		return render_template('PressureForm.html', form = form, p=p, T=t, rho = rho, Cv=cv, Cp = cp)
+		return render_template('PressureForm.html', form = form, props = props)
 	return render_template('PressureForm.html', form=form)
 
 if __name__ == '__main__':
