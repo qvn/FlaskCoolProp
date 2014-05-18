@@ -14,13 +14,14 @@ def hello(name=None):
 @app.route('/pressure', methods=['GET','POST'])
 def pressure():
 	form = PressureForm()
+	props = {'p':''}
 	if form.validate_on_submit():
 		t = form.Temperature.data
 		p = form.Pressure.data
 		props = CoolProp_State(p,t).get_all()
 		flash('Completed Calculations')
 		return render_template('PressureForm.html', form = form, props = props)
-	return render_template('PressureForm.html', form=form)
+	return render_template('PressureForm.html', form=form, props = props)
 
 if __name__ == '__main__':
     app.run(debug=True) #debug turned on. make sure to turn off during production
