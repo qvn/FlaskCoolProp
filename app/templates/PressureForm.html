@@ -4,6 +4,7 @@
 {% from '_formhelpers.html' import render_field %}
 <form method="post" action="/pressure">
 	{{form.hidden_tag()}}
+	{{render_field(form.Fluid)}}
 	{{render_field(form.Pressure)}}
 	{{render_field(form.Temperature)}}
 	<p><input type="submit" value="Submit"></p>
