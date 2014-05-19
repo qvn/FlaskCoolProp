@@ -16,9 +16,10 @@ def pressure():
 	form = PressureForm()
 	props = {'p':''}
 	if form.validate_on_submit():
+		fluid = form.Fluid.data
 		t = form.Temperature.data
 		p = form.Pressure.data
-		props = CoolProp_State(p,t).get_all()
+		props = CoolProp_State(fluid,p,t).get_all()
 		flash('Completed Calculations')
 		return render_template('PressureForm.html', form = form, props = props)
 	return render_template('PressureForm.html', form=form, props = props)

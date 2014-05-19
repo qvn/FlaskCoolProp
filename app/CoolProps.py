@@ -4,11 +4,12 @@ from CoolProp import *
 
 class CoolProp_State():
 	"""Get States from Properties Entered"""
-	def __init__(self, P, T):
+	def __init__(self, fluid, P, T):
 		self.P = P
 		self.T = T
 		self.d = {'P':P,'T':T}
-		self.state = CoolProp.State('Water',self.d)
+		self.fluid = fluid
+		self.state = CoolProp.State(str(self.fluid),self.d)
 
 	def get_cv(self):
 		return self.state.get_cv()
@@ -26,12 +27,13 @@ class CoolProp_State():
 		return self.state.get_T()
 
 	def get_all(self):
+		fluid = self.fluid
 		t = self.get_t()
 		p = self.get_p()
 		cv = self.get_cv()
 		cp = self.get_cp()
 		rho = self.get_rho()
-		return {'t':t,'p':p,'cv':cv, 'cp':cp, 'rho':rho}
+		return {'fluid':fluid,'t':t,'p':p,'cv':cv, 'cp':cp, 'rho':rho}
 
 		
 		
