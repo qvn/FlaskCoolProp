@@ -14,13 +14,13 @@ def hello(name=None):
 @app.route('/pressure', methods=['GET','POST'])
 def pressure():
 	form = PressureForm()
-	props = {'p':''}
+	props = {}
 	if form.validate_on_submit():
 		fluid = form.Fluid.data
-		t = form.Temperature.data
-		p = form.Pressure.data
-		props = CoolProp_State(fluid,p,t).get_all()
-		flash('Completed Calculations')
+		flash = form.Flash.data
+		prop1 = form.Prop1.data
+		prop2 = form.Prop2.data
+		props = CoolProp_State(flash,fluid,prop1,prop2).get_all()
 		return render_template('PressureForm.html', form = form, props = props)
 	return render_template('PressureForm.html', form=form, props = props)
 

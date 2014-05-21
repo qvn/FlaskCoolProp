@@ -4,14 +4,17 @@
 {% from '_formhelpers.html' import render_field %}
 <form method="post" action="/pressure">
 	{{form.hidden_tag()}}
+	{{render_field(form.Flash)}}
 	{{render_field(form.Fluid)}}
-	{{render_field(form.Pressure)}}
-	{{render_field(form.Temperature)}}
+	{{render_field(form.Prop1)}}
+	{{render_field(form.Prop2)}}
 	<p><input type="submit" value="Submit"></p>
 </form>
 <p>Fluid Name: {{props['fluid']}} </p>
 <p>Pressure: {{props['p']}} </p>
 <p>Temperature: {{props['t']}} </p>
+<p>Entropy: {{props['s']}} </p>
+<p>Enthalpy: {{props['h']}} </p>
 <p>Cv: {{props['cv']}} </p>
 <p>Cp: {{props['cp']}} </p>
 <p>Density: {{props['rho']}} </p>
